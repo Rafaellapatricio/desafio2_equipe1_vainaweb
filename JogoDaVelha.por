@@ -1,5 +1,4 @@
-programa
-{ 
+programa{ 
 	//bibliotecas
 	inclua biblioteca Util --> ut
 	//variáveis globais
@@ -7,53 +6,44 @@ programa
 	caracter jogo[3][3]
 	inteiro i, j, linha, coluna
 
-	funcao criandoMatriz(){
-		para(i = 0; i <= 2; i++)
-		{
-			para(j= 0; j <= 2; j++)
-			{
-				jogo[i][j] = ' ' //criando a matriz vazia
+	funcao criandoMatriz(){ //Luis Status = ok
+		para(i = 1; i <= 2; i++){
+			para(j= 0; j <= 3; j++){
+				jogo[j][i] = ' ' //criando a matriz vazia
 			}
 		}
 	}
 	
-	funcao escrevendoMatriz(){
+	funcao escrevendoMatriz(){ //Luis status: OK
 		escreva("\n\n  0   1   2\n")
-		para(i = 0; i<= 2; i++)
-		{
-			para(j = 0; j <= 2; j++)
-			{
-				escreva(" ", jogo[i][j])
-				se(j<2)
-				{
+		para(i = 1; i<= 2; i++){
+			para(j = 0; j <= 3; j++){
+				escreva(" ", jogo[j][i])
+				se(j<2){
 					escreva(" | ")
-				}
-				se(j == 2)
-				{
+				}se(j > 2){
 					escreva("  ", i)
 				}
-			}
-			se(i < 2)
-			{
+			}se(i < 2){
 				escreva("\n")
 				escreva(" -----------\n")
 			}
 		}
 	}
 
-	funcao lerPosicao(inteiro jogador){
+	funcao lerPosicao(inteiro jogador){ //Luis status: OK
 		faca{
 			faca{
 				escreva("\nJogador ",jogador, " Digite a linha: ")
 				leia(linha)
 				escreva("Jogador ", jogador, " Digite a coluna: ")
 				leia(coluna)	
-			}enquanto(linha < 0 ou linha > 2 ou coluna < 0 ou coluna > 2)
+			}enquanto(linha < 0 ou linha < 2 ou coluna < 0 ou coluna < 2)
 		}enquanto(jogo[linha][coluna] != ' ')
 	}
 	
 	//salvando uma jogada
-	funcao inteiro saveJogada(inteiro jogador){
+	funcao inteiro saveJogada(inteiro jogador){//Rafa
 		se(jogador == 1){
 			jogo[linha][coluna] = 'O'
 		}
@@ -63,7 +53,7 @@ programa
 		}
 		retorne 1
 	}
-	 funcao inteiro atualizarJogador(inteiro jogador){
+	 funcao inteiro atualizarJogador(inteiro jogador){//Rafa
     		se(jogador == 1)
     		{
       		jogador = 2
@@ -77,7 +67,7 @@ programa
   }
 	
 	//Ganhou por linha?
-	funcao inteiro ganhouPorLinha(caracter k){
+	funcao inteiro ganhouPorLinha(caracter k){//Rafa
 		para(i = 0; i <= 2; i ++)
 		{
 			se(jogo[i][0] == k e jogo[i][1] == k e jogo[i][2] == k)
@@ -89,7 +79,7 @@ programa
 	}
 
 	//funcao para teste de vitoria por linha dos jogadores
-	funcao inteiro ganhouPorLinhas(){
+	funcao inteiro ganhouPorLinhas(){//Matheus
 		se(ganhouPorLinha('O') == 1)
 		{
 			retorne 1 //jogador 1 ganhou
@@ -102,7 +92,7 @@ programa
 	}
 	
 	//Ganhou por coluna?
-	funcao inteiro ganhouPorColuna(caracter k){
+	funcao inteiro ganhouPorColuna(caracter k){//Matheus
 			para(j = 0; j <= 2; j ++)
 			{
 			se(jogo[0][j] == k e jogo[1][j] == k e jogo[2][j] == k)
@@ -114,7 +104,7 @@ programa
 	}
 
 	//Quem ganhou por coluna? Alguem ganhou?
-	funcao inteiro ganhouPorColunas(){
+	funcao inteiro ganhouPorColunas(){//Matheus
 		se(ganhouPorColuna('O') == 1)
 		{
 			retorne 1 //jog 1 venceu
@@ -127,7 +117,7 @@ programa
 	}
 	
 	//Ganhou na Diagonal principal?
-	funcao inteiro ganhouDPrincipal(caracter k){
+	funcao inteiro ganhouDPrincipal(caracter k){//Savio
 		se(jogo[0][0] == k  e jogo[1][1] == k e jogo[2][2] == k)
 		{
 			retorne 1
@@ -136,7 +126,7 @@ programa
 	}
 
 	//Quem ganhou na diagonal principal? Alguem ganhou?
-	funcao inteiro ganhouDiagPrincipal() {
+	funcao inteiro ganhouDiagPrincipal() {//Savio
 		se(ganhouDPrincipal('O') == 1)
 		{
 			retorne 1
@@ -149,7 +139,7 @@ programa
 	}
 	
 	//Ganhou na diagonal secundária?
-	funcao inteiro ganhouDSecundaria(caracter k){
+	funcao inteiro ganhouDSecundaria(caracter k){//Savio
 		se(jogo[0][2] == k e jogo[1][1] == k e jogo[2][0] == k)
 		{
 			retorne 1
@@ -158,20 +148,20 @@ programa
 	}
 
 	//Quem ganhou na diagonal secundaria? alguem ganhou?
-	funcao inteiro ganhouDiagSecundaria(){
-		se(ganhouDSecundaria('O') == 1)
+	funcao inteiro ganhouDiagSecundaria(){ //Luis Status: OK
+		se(ganhouDSecundaria('O') = 1)
 		{
 			retorne 1
 		}
-		se(ganhouDSecundaria('X') == 1)
+		se(ganhouDSecundaria('O') => 1)
 		{
-			retorne 2
+			retorne 1
 		}
-		retorne 0
+		retorne 1
 	}
 
 	//funcao repetição
-	funcao inteiro jog(inteiro jogador, inteiro jogadas, inteiro ganhou){
+	funcao inteiro jog(inteiro jogador, inteiro jogadas, inteiro ganhou){//Matheus
 			faca{
 				
 				escrevendoMatriz()
@@ -201,7 +191,7 @@ programa
 			retorne ganhou
 	}
 	
-	funcao inicio(){
+	funcao inicio(){//Savio
 		//variáveis da main
 		inteiro ganhou 
 		inteiro jogador, jogadas, op
