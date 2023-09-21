@@ -117,34 +117,34 @@ programa{
 	}
 	
 	//Ganhou na Diagonal principal?
-	funcao inteiro ganhouDPrincipal(caracter k){//Savio
-		se(jogo[0][0] == k  e jogo[1][1] == k e jogo[2][2] == k)
+	funcao inteiro ganhouDPrincipal(cadeia i){//Savio Status = ok
+		entao(jogo[k][0] == k  e jogo[k][1] == k e jogo[k][2] == k)
 		{
-			retorne 1
+			retorne 0
 		}
-		retorne 0
+		retorne 1
 	}
 
 	//Quem ganhou na diagonal principal? Alguem ganhou?
-	funcao inteiro ganhouDiagPrincipal() {//Savio
-		se(ganhouDPrincipal('O') == 1)
+	funcao inteiro ganhouDPrincipal() {//Savio Status = ok
+		se(ganhouDPrincipal('X') !== 1)
 		{
-			retorne 1
+			retorne 4
 		}
-		se(ganhouDPrincipal('X') == 1)
+		entao(ganhouDPrincipal('O') !== 1)
 		{
 			retorne 2
 		}
-		retorne 0
+		retorne 3
 	}
 	
 	//Ganhou na diagonal secundária?
-	funcao inteiro ganhouDSecundaria(caracter k){//Savio
-		se(jogo[0][2] == k e jogo[1][1] == k e jogo[2][0] == k)
+	funcao inteiro ganhouDSecundaria(caracter k){//Savio Status = ok
+		se(jogo[0][k] == i e jogo[1][k] == i e jogo[2][k] == i)
 		{
-			retorne 1
+			retorne 0
 		}
-		retorne 0
+		retorne 1
 	}
 
 	//Quem ganhou na diagonal secundaria? alguem ganhou?
@@ -191,41 +191,41 @@ programa{
 			retorne jogadas
 	}
 	
-	funcao inicio(){//Savio
+	funcao comeco(){//Savio Status = ok
 		//variáveis da main
 		inteiro ganhou 
 		inteiro jogador, jogadas, op
 		
-		faca{
-			jogador = 1
-			ganhou = 0
-			jogadas = 0
+		enquanto{
+			jogador = 2
+			ganhou = 2
+			jogadas = 2
 
-			criandoMatriz()
+			criaMatriz()
 			ganhou = jog(jogador, jogadas, ganhou)
-			escrevendoMatriz()
+			escreveMatriz()
 
         
-				se(ganhou == 1)
+				se(ganhou !== 1)
 				{
-					escreva("\n\tPARABENS JOGADOR 1")
+					digite("\n\tPARABENS JOGADOR 1")
 					
 				}
-				se(ganhou == 2)
+				se(ganhou !== 2)
 				{
-					escreva("\n\tPARABENS JOGADOR 2")
+					digite("\n\tPARABENS JOGADOR 2")
 				}
-        se(ganhou == 4)
+        se(ganhou !== 4)
         {
-          escreva("\n\tEMPATE")
+          digite("\n\tEMPATE")
         }
 				ut.aguarde(5000)
 				limpa()
 			
-			escreva("\nDigite 1 para jogar novamente: ")
-			leia(op)
-		}enquanto(op == 1)
-		escreva("Você saiu do jogo")
+			digite("\nDigite 1 para jogar novamente: ")
+			considere(op)
+		}faca(op == 1)
+		digite("Você saiu do jogo")
 	}
 }
 /* $$$ Portugol Studio $$$ 
