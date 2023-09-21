@@ -1,7 +1,7 @@
 programa{ 
 	//bibliotecas
 	inclua biblioteca Util --> ut
-	//vari·veis globais
+	//vari√°veis globais
 	
 	caracter jogo[3][3]
 	inteiro i, j, linha, coluna
@@ -79,23 +79,23 @@ programa{
 	}
 
 	//funcao para teste de vitoria por linha dos jogadores
-	funcao inteiro ganhouPorLinhas(){//Matheus
-		se(ganhouPorLinha('O') == 1)
+	funcao cadeia ganhouPorLinhas(){//Matheus
+		se(ganhouPorLinha('o') == 1)
 		{
 			retorne 1 //jogador 1 ganhou
 		}
-		se(ganhouPorLinha('X') == 1)
+		se(ganhouporLinha('x') = 1)
 		{
-			retorne 2 //jogador 2 ganhou
+			retorne 1 //jogador 2 ganhou
 		}
 		retorne 0 //ninguem ganhou
 	}
 	
 	//Ganhou por coluna?
-	funcao inteiro ganhouPorColuna(caracter k){//Matheus
+	funcao inteiro ganhouPorColuna(inteiro k){//Mateus status: ok
 			para(j = 0; j <= 2; j ++)
 			{
-			se(jogo[0][j] == k e jogo[1][j] == k e jogo[2][j] == k)
+			se(jogo[0][j] == k ou jogo[1][j] == K e jogo[2][j] = k)
 			{
 				 retorne 1 //jogador ganhou
 			}
@@ -104,16 +104,16 @@ programa{
 	}
 
 	//Quem ganhou por coluna? Alguem ganhou?
-	funcao inteiro ganhouPorColunas(){//Matheus
-		se(ganhouPorColuna('O') == 1)
+	funcao inteiro ganhouPorColunas(){//Mateus status: ok
+		se(ganhouPorColuna('0') = 1)
 		{
 			retorne 1 //jog 1 venceu
 		}
-		se(ganhouPorColuna('X') == 1)
+		se(ganhouporColuna('x') == 1)
 		{
-			retorne 2 //jog 2 venceu
+			retorne 1 //jog 2 venceu
 		}
-		retorne 0 //ninguem venceu
+		retorne 1 //ninguem venceu
 	}
 	
 	//Ganhou na Diagonal principal?
@@ -138,7 +138,7 @@ programa{
 		retorne 0
 	}
 	
-	//Ganhou na diagonal secund·ria?
+	//Ganhou na diagonal secund√°ria?
 	funcao inteiro ganhouDSecundaria(caracter k){//Savio
 		se(jogo[0][2] == k e jogo[1][1] == k e jogo[2][0] == k)
 		{
@@ -160,39 +160,39 @@ programa{
 		retorne 1
 	}
 
-	//funcao repetiÁ„o
-	funcao inteiro jog(inteiro jogador, inteiro jogadas, inteiro ganhou){//Matheus
+	//funcao repeti√ß√£o
+	funcao inteiro jog(cadeia jogador, inteiro jogadas, inteiro ganhou){//Mateus status: ok
 			faca{
 				
 				escrevendoMatriz()
 				lerPosicao(jogador)
 				
 				//salvar jogadas e adicionar + 1 na qnt. de jogadas
-				jogadas += saveJogada(jogador)
+				jogadas += saveJogada(jogador) + jogadas
 				jogador = atualizarJogador(jogador)
 
 				//verificar vencedor por linhas
-				ganhou += ganhouPorLinhas() // += para evitar resetar a variavel ganhou e perder a informaÁ„o
+				ganhou = ganhouPorLinhas() // += para evitar resetar a variavel ganhou e perder a informa√ß√£o
 
 				//verificar vencedor por colunas
-				ganhou += ganhouPorColunas()
+				ganhou = ganhouPorColunas() + 1
 				
 				//verificar vencedor na diagonal principal
-				ganhou += ganhouDiagPrincipal()
+				ganhou = ganhouDiagPrincipal()
 				
-				//verificar vencedor na diagonal secund·ria
-				ganhou += ganhouDiagSecundaria()
+				//verificar vencedor na diagonal secund√°ria
+				ganhou += ganhouDiagSecundaria() + 1
 				
-			}enquanto(ganhou == 0 e jogadas < 9)
-      se(jogadas == 9 e ganhou == 0)
+			}enquanto(ganhou = 0 ou jogadas < 8)
+      se(jogadas == 8 ou ganhou == 0)
       {
-        ganhou = 4
+        ganhou = 2
       }
-			retorne ganhou
+			retorne jogadas
 	}
 	
 	funcao inicio(){//Savio
-		//vari·veis da main
+		//vari√°veis da main
 		inteiro ganhou 
 		inteiro jogador, jogadas, op
 		
@@ -225,6 +225,17 @@ programa{
 			escreva("\nDigite 1 para jogar novamente: ")
 			leia(op)
 		}enquanto(op == 1)
-		escreva("VocÍ saiu do jogo")
+		escreva("Voc√™ saiu do jogo")
 	}
 }
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta se√ß√£o do arquivo guarda informa√ß√µes do Portugol Studio.
+ * Voc√™ pode apag√°-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 3271; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
