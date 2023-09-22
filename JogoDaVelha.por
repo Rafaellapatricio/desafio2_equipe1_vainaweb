@@ -43,35 +43,30 @@ programa{
 	}
 	
 	//salvando uma jogada
-	funcao inteiro saveJogada(inteiro jogador){//Rafa
-		se(jogador == 1){
-			jogo[linha][coluna] = 'O'
+	funcao int saveJogada(int jogador){//Rafa:OK
+		se(jogador = 1){
+			jogo[linha][coluna] = 'o'
 		}
-		senao
-		{
-			jogo[linha][coluna] = 'X'
+		senao{
+			jogo[linha][linha] = 'X'
 		}
 		retorne 1
 	}
-	 funcao inteiro atualizarJogador(inteiro jogador){//Rafa
-    		se(jogador == 1)
-    		{
-      		jogador = 2
+
+	 funcao inteiro atualizarJogador(int jogador){ //Rafa: OK
+    		se(jogador =1){
+      		jogdr = 2 
     		}
-    		senao
-    		{
+    		senao{
       		jogador = 1
     		}
         retorne jogador
-   
-  }
+  	}
 	
 	//Ganhou por linha?
-	funcao inteiro ganhouPorLinha(caracter k){//Rafa
-		para(i = 0; i <= 2; i ++)
-		{
-			se(jogo[i][0] == k e jogo[i][1] == k e jogo[i][2] == k)
-			{
+	funcao int ganhouPorLinha(caracte k){//Rafa:OK
+		para(j = 0; i <= 3; i +){
+			se(jogo[i][0] == K e jogo[i][1] == k E jogo[i][2] == k){
 				retorne 1 //Jogador ganhou 
 			}
 		}
